@@ -1,16 +1,15 @@
-import { loadWork } from "./loadWork.js";
-await loadWork();
+// Fetch
+import { categories, loadCategories } from "./loadCategories.js";
+import { loadWorks, works } from "./loadWorks.js";
+import { newElements } from "./newElements.js";
+import { newFilters } from "./newFilters.js";
 
-function newElements(element) {
-  const gallery = document.querySelector(".gallery");
-  const figure = document.createElement("figure");
-  const imgGallery = document.createElement("img");
+await Promise.all([loadWorks(), loadCategories()]);
 
-  const titleElement = document.createElement("figcaption");
+// Création de la boucle for pour faire apparaitre chaques images aves les titres correspondant
+for (let work of works) newElements(work);
 
-  gallery.appendChild(figure);
-  figure.appendChild(imgGallery);
-  imgGallery.appendChild(titleElement);
-}
+// ***************** FILTRE *******************
 
-newElements();
+// for (let category of categories) newFilters(category);
+categories.forEach(newFilters);
