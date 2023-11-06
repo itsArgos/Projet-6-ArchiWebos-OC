@@ -1,5 +1,5 @@
 /**
- * Création de la fonction newElements avec le paramètre (e) qui servira à effectuer des opérations pour la liaison avec mon API
+ * Création de la fonction newElements avec le paramètre (work) qui servira à effectuer des opérations pour la liaison avec mon API
  * @typedef Work
  * @type {object}
  * @property {number} id
@@ -12,6 +12,8 @@ export function newElements(work) {
   // Création du HTML en JS
   const gallery = document.querySelector(".gallery");
   const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
   const imgGallery = document.createElement("img");
   imgGallery.src = work.imageUrl;
   const figcaption = document.createElement("figcaption");

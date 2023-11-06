@@ -1,0 +1,7 @@
+1. index.html qui est appelé par le navigateur
+2. <script> => script.js
+3. importe le fichier loadWorks.js (ligne 2)
+4. dans loadWorks on crée une fonction qui va charger les works et qui va mettre les works chargés dans la variable "works"
+5. dans script.js appelle loadWorks à la ligne 8 donc à partir de là works = tableau de works
+6. dans script.js à la ligne 21 tu appelles fillModal et tu lui passes en paramètres le tableau de works
+7. dans modal.js à la ligne 23 execute la fonction fillModal 

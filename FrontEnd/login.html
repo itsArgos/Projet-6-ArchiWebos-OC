@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <title>Page de login</title>
+
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <script src="./assets/js/login.js" type="module"></script>
+</head>
+
+<body>
+    <main>
+        <header>
+            <a href="./index.html">
+                <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+            </a>
+            <nav>
+                <ul>
+                    <li>projets</li>
+                    <li>contact</li>
+                    <li class="bold-log">login</li>
+                    <li><i class="fa-brands fa-instagram"></i></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="contact">
+            <h2>Log In</h2>
+            <form class="form-request" action="#" method="post">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="pass">Mot de passe</label>
+                <input type="password" name="password" minlength="3" required id="password" />
+                <input class="submit-2" type="submit" value="Se connecter">
+                <div class="forgot-pw">
+                    <a href="#">Mot de passe oublié</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer-bp">
+        <nav>
+            <ul>
+                <li>Mentions Légales</li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
