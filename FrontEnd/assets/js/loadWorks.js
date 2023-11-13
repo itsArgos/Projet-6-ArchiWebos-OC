@@ -1,6 +1,7 @@
 export let works = [];
 
 export const loadWorks = async () => {
+  // Autre possibilité :
   // fetch("http://localhost:5678/api/works").then((response) => {
   //   response.json().then((works) => {
 

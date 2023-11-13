@@ -280,7 +280,8 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
+	height: 100%;
+	object-fit: cover;
 }
 
 #contact {
@@ -630,6 +631,10 @@ select {
 	font-family: Syne;
 	margin-top: 20px;
 	cursor: pointer;
+}
+
+.submit-modal:disabled {
+	cursor: not-allowed;
 }
 
 .verif-modal {

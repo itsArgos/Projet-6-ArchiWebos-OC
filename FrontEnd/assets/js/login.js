@@ -24,23 +24,19 @@ form.addEventListener("submit", async (event) => {
     body: JSON.stringify(value),
   });
 
+  //  Attend la réponse de la requête pour pouvoir poursuivre la suite du code
   const login = await response.json();
-  localStorage.setItem("token", login.token);
 
-  window.location.href = "admin.html";
+  if (response.ok) {
+    // Si la réponse est réussie (statut HTTP 200),
+    // enregistre le token d'authentification dans le stockage local
+    localStorage.setItem("token", login.token);
+    alert("Connexion réussie !");
+    // Redirige l'utilisateur vers la page "admin.html"
+    window.location.href = "admin.html";
+  } else {
+    alert(`E-mail ou Mot de passe incorrect`);
+    // Sinon, si la réponse n'est pas réussie,
+    // affiche une alerte indiquant que l'e-mail ou le mot de passe est incorrect
+  }
 });
-
-// ici je veux récupérer le token
-//const myToken = localStorage.getItem("token");
-
-// Exemple de l'utilisation d'un JWT
-// const createWork = async () => {
-//   const response = await fetch("http://localhost:5678/api/works", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: "Bearer monToken",
-//     },
-//     body: JSON.stringify(value),
-//   });
-// };

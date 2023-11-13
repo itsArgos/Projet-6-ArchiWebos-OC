@@ -8,8 +8,8 @@
  *
  * @param {Work} e
  */
-export function newElements(work) {
-  // Création du HTML en JS
+export function newElement(work) {
+  // Création du code HTML en JS
   const gallery = document.querySelector(".gallery");
   const figure = document.createElement("figure");
   figure.dataset.id = work.id;

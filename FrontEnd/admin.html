@@ -148,7 +148,7 @@
                                         <i class="fa-regular fa-image"></i>
                                     </div>
                                     <input name="image" id="input_file" type="file">
-                                    <button type="button" class="button-add">+ Ajouter photo</button>
+                                    <button type="button" class="button-file">+ Ajouter photo</button>
                                     <p class="format-image">jpg, png : 4mo max</p>
                                 </div>
                             </div>
@@ -156,14 +156,14 @@
                             <input name="title" id="title" type="text">
                             <label for="category">Catégorie</label>
                             <select name="category" id="category" name="listeDeroulante">
-                                <option value="" disabled></option>
+                                <option value="" disabled selected hidden></option>
                                 <option value="1">Objets</option>
                                 <option value="2">Appartements</option>
                                 <option value="3">Hôtels & Restaurants</option>
                             </select>
                         </form>
                         <hr>
-                        <button class="submit-modal">Valider</button>
+                        <button class="submit-modal" disabled>Valider</button>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 /** ********************CONSTANTE*************** **/
 
 import { works } from "./loadWorks";
+import { newElement } from "./newElements";
 
 const modal = document.querySelector(".modal");
 const modalTwo = document.querySelector(".modal_2");
-const btnAdd = document.querySelector(".button-add");
+const btnAdd = document.querySelector(".button-file");
 const faImage = document.querySelector(".fa-image");
 const formatImage = document.querySelector(".format-image");
 
@@ -12,18 +13,22 @@ const token = localStorage.getItem("token");
 const inputFile = document.querySelector(".modal_2 input[type=file]");
 const inputText = document.getElementById("title");
 const inputCategory = document.getElementById("category");
+const form = document.querySelector("form");
 
 // *******************MODAL*****************
+// Ajoute un écouteur d'événements au clic sur l'icone modifier
 document
   .querySelector(".icon-modify button")
   ?.addEventListener("click", function () {
     modal.style.display = "flex";
   });
 
+// Ajoute un écouteur d'événements au clic sur la croix pour fermer la modal
 document.querySelector(".fa-x")?.addEventListener("click", function () {
   modal.style.display = "none";
 });
 
+// Cette fonction permet de remplir le premier modal (image & poubelle)
 export function fillModal(works) {
   const gridGallery = document.querySelector(".grid-gallery");
 
@@ -37,7 +42,6 @@ export function fillModal(works) {
 
     const btnGarbage = document.createElement("button");
     btnGarbage.classList.add("garbage");
-    // btnGarbage.dataset.id = work.id; <= pour stocker une valeur dans un élément HTML
     const garbageIcon = document.createElement("i");
     garbageIcon.setAttribute("class", "fa-solid fa-trash-can");
 
@@ -47,8 +51,9 @@ export function fillModal(works) {
     galleryContent.appendChild(btnGarbage);
 
     // ******************* Remove Item ****************
-
+    // Ajoute un écouteur d'événements au clic sur l'icône de corbeille
     garbageIcon.addEventListener("click", async function () {
+      // Fait une requête DELETE à l'adresse correspondant à l'ID de work
       const response = await fetch(
         `http://localhost:5678/api/works/${work.id}`,
         {
@@ -60,10 +65,13 @@ export function fillModal(works) {
         }
       );
 
+      // Si la réponse est réussie (statut HTTP 200)
       if (response.ok === true) {
+        // Supprime le contenu de la galerie avec l'ID correspondant au work
         document
           .querySelector(`.gallery-content[data-id="${work.id}"]`)
           .remove();
+        // Supprime la figure avec l'ID correspondant au work
         document.querySelector(`figure[data-id="${work.id}"]`).remove();
       }
     });
@@ -72,6 +80,7 @@ export function fillModal(works) {
 
 // ************************** MODAL 2 ********************
 
+// Ajoute un écouteur d'événements au clic sur le bouton "Ajouter une photo"
 document.querySelector(".add-picture")?.addEventListener("click", function () {
   modalTwo.style.display = "flex";
 
@@ -156,24 +165,29 @@ document.querySelector(".add-picture")?.addEventListener("click", function () {
   // modalContent.appendChild(submitModal);
 });
 
+// Ajoute un écouteur d'événements au clic sur la fleche permettant le retour en arriere
 document
   .querySelector(".fa-arrow-left")
   ?.addEventListener("click", function () {
     modalTwo.style.display = "none";
   });
 
+// Ajoute un écouteur d'événements au clic sur la croix permettant de fermer toutes les fenêtre de modal
 document.querySelector("#closed")?.addEventListener("click", function () {
   modal.style.display = "none";
   modalTwo.style.display = "none";
 });
 
-document.querySelector(".button-add")?.addEventListener("click", function () {
+// Ajoute un écouteur d'événements au clic sur le boutton permettant d'ajouter une photo
+document.querySelector(".button-file")?.addEventListener("click", function () {
   inputFile.click();
 });
 
 let imgUpload = null;
 
+// Ajoute un écouteur d'événements pour l'événement "change" sur l'élément inputFile
 inputFile?.addEventListener("change", async function (data) {
+  // Masque le bouton "Ajouter", l'icône d'image Font Awesome, et les informations sur le format de l'image
   btnAdd.style.display = "none";
   faImage.style.display = "none";
   formatImage.style.display = "none";
@@ -189,17 +203,26 @@ inputFile?.addEventListener("change", async function (data) {
   };
   imgUpload = data.target.files[0];
   reader.readAsDataURL(data.target.files[0]);
-  console.log(inputFile.files[0]);
+  // console.log(inputFile.files[0]);
 });
+
+// Cette fonction vérifie les valeurs de inputFile,inputText,inputCategory. Si elles sont vraies alors le bouton "Valider" est vert. Sinon le bouton "Valider" est grisé.
+function verifSubmitModal() {
+  if (inputFile.value && inputText.value && inputCategory.value) {
+    submitModal.classList.remove("submit-modal");
+    submitModal.classList.add("verif-modal");
+    submitModal.removeAttribute("disabled");
+  } else {
+    submitModal.classList.remove("verif-modal");
+    submitModal.classList.add("submit-modal");
+    submitModal.setAttribute("disabled", true);
+  }
+}
 
 document
   .querySelector(".submit-modal")
   ?.addEventListener("click", async function () {
-    // Pour envoyer les données avec une image passer par un formData
-
-    const form = document.querySelector("form");
     const formData = new FormData(form);
-
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
@@ -210,24 +233,27 @@ document
     });
 
     if (response.ok) {
-      const work = await response.json();
-      works.push(work);
+      const newWork = await response.json();
+      works.push(newWork);
+
+      newElement(newWork);
+      inputText.value = "";
+      inputFile.value = "";
+      inputCategory.value = "";
+
+      btnAdd.style.display = "inline-block";
+      faImage.style.display = "inline-block";
+      formatImage.style.display = "block";
+
+      document.querySelector(".add-content img").remove();
+
+      verifSubmitModal();
     }
   });
 
 const submitModal = document.querySelector(".submit-modal");
 
-function verifForm() {
-  if (
-    (inputFile !== null || undefined,
-    (inputText.value !== "" && undefined) || null,
-    inputCategory.selected === true)
-  )
-    submitModal.classList.add("verif-modal");
-  else {
-    alert("Veuillez remplir tous les champs.");
-  }
-}
+form.addEventListener("change", verifSubmitModal);
 
 /** Pour le bouton Valider */
 /** 1. récuperer l'élement input type file, celui de type text & le select
