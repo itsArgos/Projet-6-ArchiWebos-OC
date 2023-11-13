@@ -20,15 +20,22 @@ const form = document.querySelector("form");
 document
   .querySelector(".icon-modify button")
   ?.addEventListener("click", function () {
-    modal.style.display = "flex";
+    modal.showModal();
   });
+
+document.querySelector(".modal").addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.close();
+  }
+});
 
 // Ajoute un écouteur d'événements au clic sur la croix pour fermer la modal
 document.querySelector(".fa-x")?.addEventListener("click", function () {
-  modal.style.display = "none";
+  // modal.style.display = "none";
+  modal.close();
 });
 
-// Cette fonction permet de remplir le premier modal (image & poubelle)
+// Cette fonction permet de remplir la première modal (image & poubelle)
 export function fillModal(works) {
   const gridGallery = document.querySelector(".grid-gallery");
 
@@ -80,102 +87,27 @@ export function fillModal(works) {
 
 // ************************** MODAL 2 ********************
 
-// Ajoute un écouteur d'événements au clic sur le bouton "Ajouter une photo"
 document.querySelector(".add-picture")?.addEventListener("click", function () {
-  modalTwo.style.display = "flex";
+  modalTwo.showModal();
+});
 
-  // const modalIn = document.createElement("div");
-  // modalIn.classList.add("modal_in");
-
-  // const modalIcon = document.createElement("div");
-  // modalIcon.classList.add("modal_2_icon");
-  // const arrowLeft = document.createElement("i");
-  // const xClose = document.createElement("i");
-  // arrowLeft.classList.add("fa-solid");
-  // arrowLeft.classList.add("fa-arrow-left");
-  // xClose.classList.add("fa-solid");
-  // xClose.classList.add("fa-x");
-
-  // const addPhoto = document.createElement("h4");
-  // addPhoto.innerText = "Ajout Photo";
-  // addPhoto.classList.add("modal_in_h4");
-
-  // const modalContent = document.createElement("div");
-  // modalContent.classList.add("modal2-content");
-
-  // const pictureContainer = document.createElement("div");
-  // pictureContainer.classList.add("picture-container");
-
-  // const addContent = document.createElement("div");
-  // addContent.classList.add("add-content");
-  // const divIcon = document.createElement("div");
-  // const iconImage = document.createElement("i");
-  // iconImage.classList.add("fa-regular");
-  // iconImage.classList.add("fa-image");
-  // const btnAdd = document.createElement("button");
-  // btnAdd.innerText = "Ajouter photo";
-  // const imageAutorized = document.createElement("p");
-  // imageAutorized.innerText = "jpg, png : 4mo max";
-
-  // const title = document.createElement("h3");
-  // title.innerText = "Titre";
-  // const inputText = document.createElement("input");
-  // inputText.innerText = "";
-
-  // const categorie = document.createElement("h3");
-  // categorie.innerText = "Catégorie";
-  // const select = document.createElement("select");
-  // const optionSelect = document.createElement("option");
-  // optionSelect.innerText = "";
-  // const optionSelect1 = document.createElement("option");
-  // optionSelect1.innerText = "Objets";
-  // const optionSelect2 = document.createElement("option");
-  // optionSelect2.innerText = "Appartements";
-  // const optionSelect3 = document.createElement("option");
-  // optionSelect3.innerText = "Hôtels & Restaurants";
-
-  // const hr = document.createElement("hr");
-  // hr.classList.add("modal_in_hr");
-
-  // const submitModal = document.createElement("button");
-  // submitModal.classList.add("submit-modal");
-  // submitModal.innerText = "Valider";
-
-  // modalTwo.appendChild(modalIn);
-  // modalIn.appendChild(modalIcon);
-  // modalIcon.appendChild(arrowLeft);
-  // modalIcon.appendChild(xClose);
-  // modalIn.appendChild(addPhoto);
-  // modalIn.appendChild(modalContent);
-  // modalContent.appendChild(pictureContainer);
-  // pictureContainer.appendChild(addContent);
-  // addContent.appendChild(divIcon);
-  // divIcon.appendChild(iconImage);
-  // addContent.appendChild(btnAdd);
-  // addContent.appendChild(imageAutorized);
-  // modalContent.appendChild(title);
-  // modalContent.appendChild(inputText);
-  // modalContent.appendChild(categorie);
-  // modalContent.appendChild(select);
-  // select.appendChild(optionSelect);
-  // select.appendChild(optionSelect1);
-  // select.appendChild(optionSelect2);
-  // select.appendChild(optionSelect3);
-  // modalContent.appendChild(hr);
-  // modalContent.appendChild(submitModal);
+document.querySelector(".modal_2").addEventListener("click", function (event) {
+  if (event.target === modalTwo) {
+    modalTwo.close();
+  }
 });
 
 // Ajoute un écouteur d'événements au clic sur la fleche permettant le retour en arriere
 document
   .querySelector(".fa-arrow-left")
   ?.addEventListener("click", function () {
-    modalTwo.style.display = "none";
+    modalTwo.close();
   });
 
 // Ajoute un écouteur d'événements au clic sur la croix permettant de fermer toutes les fenêtre de modal
 document.querySelector("#closed")?.addEventListener("click", function () {
-  modal.style.display = "none";
-  modalTwo.style.display = "none";
+  modal.close();
+  modalTwo.close();
 });
 
 // Ajoute un écouteur d'événements au clic sur le boutton permettant d'ajouter une photo

@@ -22,6 +22,53 @@
         <p>Mode édition</p>
     </div>
 
+    <dialog class="modal">
+        <div class="modal_in">
+            <div class="x-close">
+                <i class="fa-solid fa-x"></i>
+            </div>
+            <h4>Galerie Photo</h4>
+            <div class="grid-gallery"></div>
+            <hr>
+            <button class="add-picture">Ajouter une photo</button>
+        </div>
+    </dialog>
+
+    <dialog class="modal_2">
+        <div class="modal_in">
+            <div class="modal_2_icon">
+                <i class="fa-solid fa-arrow-left"></i>
+                <i id="closed" class="fa-solid fa-x"></i>
+            </div>
+            <h4>Ajout photo</h4>
+            <div class="modal2-content">
+                <form>
+                    <div class="picture-container">
+                        <div class="add-content">
+                            <div>
+                                <i class="fa-regular fa-image"></i>
+                            </div>
+                            <input name="image" id="input_file" type="file">
+                            <button type="button" class="button-file">+ Ajouter photo</button>
+                            <p class="format-image">jpg, png : 4mo max</p>
+                        </div>
+                    </div>
+                    <label for="title">Titre</label>
+                    <input name="title" id="title" type="text">
+                    <label for="category">Catégorie</label>
+                    <select name="category" id="category" name="listeDeroulante">
+                        <option value="" disabled selected hidden></option>
+                        <option value="1">Objets</option>
+                        <option value="2">Appartements</option>
+                        <option value="3">Hôtels & Restaurants</option>
+                    </select>
+                </form>
+                <hr>
+                <button class="submit-modal" disabled>Valider</button>
+            </div>
+        </div>
+    </dialog>
+
     <main>
         <header>
             <a href="./index.html">
@@ -64,110 +111,6 @@
                 <p>modifier</p>
             </div>
             <div class="gallery"></div>
-
-            <div class="modal">
-                <div class="modal_in">
-                    <div class="x-close">
-                        <i class="fa-solid fa-x"></i>
-                    </div>
-                    <h4>Galerie Photo</h4>
-                    <div class="grid-gallery">
-                        <!-- <div class="gallery-content">
-                            <img src="./assets/images/abajour-tahina.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images//appartement-paris-v.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/restaurant-sushisen-londres.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/la-balisiere.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/structures-thermopolis.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/appartement-paris-x.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/villa-ferneze.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/appartement-paris-xviii.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/le-coteau-cassis.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/bar-lullaby-paris.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                        <div class="gallery-content">
-                            <img src="./assets/images/hotel-first-arte-new-delhi.png" alt="">
-                            <button class="garbage"><i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div> -->
-                    </div>
-                    <hr>
-                    <button class="add-picture">Ajouter une photo</button>
-                </div>
-            </div>
-
-            <div class="modal_2">
-                <div class="modal_in">
-                    <div class="modal_2_icon">
-                        <i class="fa-solid fa-arrow-left"></i>
-                        <i id="closed" class="fa-solid fa-x"></i>
-                    </div>
-                    <h4>Ajout photo</h4>
-                    <div class="modal2-content">
-                        <form>
-                            <div class="picture-container">
-                                <div class="add-content">
-                                    <div>
-                                        <i class="fa-regular fa-image"></i>
-                                    </div>
-                                    <input name="image" id="input_file" type="file">
-                                    <button type="button" class="button-file">+ Ajouter photo</button>
-                                    <p class="format-image">jpg, png : 4mo max</p>
-                                </div>
-                            </div>
-                            <label for="title">Titre</label>
-                            <input name="title" id="title" type="text">
-                            <label for="category">Catégorie</label>
-                            <select name="category" id="category" name="listeDeroulante">
-                                <option value="" disabled selected hidden></option>
-                                <option value="1">Objets</option>
-                                <option value="2">Appartements</option>
-                                <option value="3">Hôtels & Restaurants</option>
-                            </select>
-                        </form>
-                        <hr>
-                        <button class="submit-modal" disabled>Valider</button>
-                    </div>
-                </div>
-            </div>
-
 
         </section>
         <section id="contact">

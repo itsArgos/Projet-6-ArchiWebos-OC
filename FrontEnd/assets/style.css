@@ -409,23 +409,18 @@ footer nav ul {
 
 /* ********** First Modal ********** */
 
-.modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 2;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.modal,
+.modal_2 {
+	border: none;
+	border-radius: 10px;
+}
+
+dialog::backdrop {
 	background: rgba(0, 0, 0, 0.30);
-	display: none;
 }
 
 
 .modal_in {
-	position: fixed;
 	width: 630px;
 	height: 688px;
 	border-radius: 10px;
@@ -510,19 +505,7 @@ footer nav ul {
 
 /* ********** Second Modal ********** */
 
-.modal_2 {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 3;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: rgba(0, 0, 0, 0.30);
-	display: none;
-}
+
 
 .modal2-content {
 	width: 420px;
